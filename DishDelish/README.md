@@ -12,9 +12,26 @@ node -v
 npm -v
 ```
 
-Install Angular CLI `npm install -g @angular/cli`, use `sudo` if you run into any permission errors```
+Install Angular CLI
 
-Install typings and typescript 
+```
+npm install -g @angular/cli
+```
+
+use `sudo` if you run into any permission errors
+
+Install typings and typescript
+
+```
+npm install -g  typings
+npm install -g typescript
+```
+
+Install the AngularFire library for accessing Firebase with Angular
+
+```
+npm install angularfire2 firebase --save
+```
 
 ##Serving the application
 In terminal, `cd` to `path_to_your_cloned_repo/dish-delish/DishDelish`, make sure you are in under `DishDelish` not `dish-delish` since the former is the root folder of the application.
