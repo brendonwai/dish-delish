@@ -36,4 +36,9 @@ npm install angularfire2 firebase --save
 ##Serving the application
 In terminal, `cd` to `path_to_your_cloned_repo/dish-delish/DishDelish`, make sure you are in under `DishDelish` not `dish-delish` since the former is the root folder of the application.
 
-Run the command  `ng serve --open`. See that it opens a new browser page and displays contents correctly.
+Run the command  
+
+```
+ng serve --open
+```
+See that it opens a new browser page and displays contents correctly.
