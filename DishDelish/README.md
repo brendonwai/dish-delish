@@ -33,6 +33,12 @@ Install the AngularFire library for accessing Firebase with Angular
 npm install angularfire2 firebase --save
 ```
 
+Make sure you are under DishDelish directory, run command
+
+```
+npm install
+```
+
 ##Serving the application
 In terminal, `cd` to `path_to_your_cloned_repo/dish-delish/DishDelish`, make sure you are in under `DishDelish` not `dish-delish` since the former is the root folder of the application.
 
