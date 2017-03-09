@@ -2,8 +2,8 @@
   {{title}}
 </h1>
 <search-bar></search-bar>
-<ul>
-  <li class = "text" *ngFor = "let item of items | async">
+<ul class = "cities">
+  <li *ngFor = "let item of items | async">
     {{item.city}}: {{item.food}}
   </li>
 </ul>
