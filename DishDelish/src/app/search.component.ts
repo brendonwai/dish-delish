@@ -20,7 +20,7 @@ export class SearchComponent{
     this.cities = af.database.list('/cities', {
       query: {
         orderByChild: 'city',
-        startAt: this.searchTerms
+        equalTo: this.searchTerms
       }
     });
     this.cities.subscribe(queriedItems => {
