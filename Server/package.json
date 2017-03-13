@@ -1,0 +1,27 @@
+{
+  "name": "dd-server",
+  "version": "1.0.0",
+  "description": "server for app dish delish",
+  "main": "hello_http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendonwai/dish-delish.git"
+  },
+  "keywords": [
+    "dish",
+    "delish"
+  ],
+  "author": "Brendon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendonwai/dish-delish/issues"
+  },
+  "homepage": "https://github.com/brendonwai/dish-delish#readme",
+  "dependencies": {
+    "firebase-admin": "^4.1.3",
+    "twitter": "^1.7.0"
+  }
+}

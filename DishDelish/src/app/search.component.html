@@ -1,0 +1,9 @@
+<div id = "search-component">
+  <input #searchBox id = "searchBar"/>
+  <button (click)="search(searchBox.value)">Search</button>
+  <div>
+    <div *ngFor = "let c of cities | async" class = "search-result">
+      {{c.city}}
+    </div>
+  </div>
+</div>
