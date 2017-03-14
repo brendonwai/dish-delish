@@ -3,7 +3,7 @@
   <button (click)="search(searchBox.value)">Search</button>
   <div>
     <div *ngFor = "let c of cities | async" class = "search-result">
-      {{c.city}}
+      {{c.$key}}
     </div>
   </div>
 </div>
