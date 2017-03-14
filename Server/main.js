@@ -27,11 +27,6 @@ admin.initializeApp({
   }
 });
 
-var server = http.createServer(function(req, res){
-  res.writeHead(200);
-  res.end('Dish Delish');
-});
-
 var db = admin.database();
 var ref = db.ref("/cities");
 
@@ -58,5 +53,11 @@ client.get('search/tweets', {q:'%23food',count:2}, function(error, tweets, respo
     console.log(tweets);
   }
 })
+/* basic server functionality
+var server = http.createServer(function(req, res){
+  res.writeHead(200);
+  res.end('Dish Delish');
+});
 
 server.listen(8080);
+*/
