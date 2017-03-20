@@ -33,27 +33,32 @@ var hashtags = [];
 var cities = [
   {
     name: "San Francisco, CA",
-    coord: "37.773964, -122.419063",
+    lat: 0.0,
+    lng: 0.0,
     foods: []
   },
   {
     name: "Seattle, WA",
-    coord: "47.605041, -122.331795",
+    lat: 0.0,
+    lng: 0.0,
     foods: []
   },
   {
     name: "New York, NY",
-    coord: "40.714680, -74.006881",
+    lat: 0.0,
+    lng: 0.0,
     foods: []
   },
   {
     name: "Washington, DC",
-    coord: "38.909418, -77.038609",
+    lat: 0.0,
+    lng: 0.0,
     foods: []
   },
   {
     name: "Austin, TX",
-    coord: "30.267144, -97.743832",
+    lat: 0.0,
+    lng: 0.0,
     foods: []
   }
 ];
@@ -87,6 +92,8 @@ function geoCallback(geocode, city_index){
   if (geocode !== null){
     var lat = geocode[0];
     var lng = geocode[1];
+    cities[city_index].lat = lat;
+    cities[city_index].lng = lng;
     var geo_string = lat + "," + lng + ",50mi";
     console.log(geo_string);
     twitter.getTweet("%23food", 100, geo_string, extractHashtags, city_index);
@@ -142,7 +149,7 @@ function searchFoodDatabase(city_index){
       topFood.push(foodList[i]);
     }
     database.removeEntry(cities[city_index].name);
-    database.updateEntry(cities[city_index].name, topFood);
+    database.updateEntry(cities[city_index].name, cities[city_index].lat, cities[city_index].lng, topFood);
     operation_done = true;
   }
 }
