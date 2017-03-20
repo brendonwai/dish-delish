@@ -1,4 +1,5 @@
 var http = require("http");
+var asyn = require("async");
 var database = require("./database")();
 var twitter = require("./getTwitter")();
 var geocode = require("./geocode")();
@@ -56,18 +57,30 @@ var cities = [
     foods: []
   }
 ];
-var searchCount = 4;
+var searchCount = 0;
 var operation_done = true;
+
+asyn.forever(
+  function(next){
+    geocode.searchGeocode(cities[searchCount%5].name, geoCallback, searchCount%5);
+    searchCount++;
+    setTimeout(next, 10000);
+  },
+  function(err){
+    console.log(err);
+  }
+);
+
 //keep updating each city
 //while (true){
-  if (operation_done){
-    console.log(cities[searchCount%5].name);
-    operation_done = false;
-    geocode.searchGeocode(cities[searchCount%5].name, geoCallback, searchCount%5);
-    //geo_string = cities[searchCount%5].coord + ",50mi";
-    //twitter.getTweet("%23food", 100, geo_string, extractHashtags, searchCount%5);
-    searchCount++;
-  }
+  // if (operation_done){
+  //   console.log(cities[searchCount%5].name);
+  //   operation_done = false;
+  //   geocode.searchGeocode(cities[searchCount%5].name, geoCallback, searchCount%5);
+  //   //geo_string = cities[searchCount%5].coord + ",50mi";
+  //   //twitter.getTweet("%23food", 100, geo_string, extractHashtags, searchCount%5);
+  //   searchCount++;
+  // }
 //}
 
 function geoCallback(geocode, city_index){
