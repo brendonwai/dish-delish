@@ -8,10 +8,13 @@ module.exports = function(){
     access_token_secret: 'i0O9cCWp2xyPH9vnyidGalv7cdbTuXXIJJD64VlM3EWFd'
   });
 
-  this.getTweet = function(q_param, amount){
-    client.get('search/tweets', {q:q_param, count:amount}, function(error, tweets, response){
+  this.getTweet = function(q_param, amount, geo_string, callback){
+    client.get('search/tweets', {screen_name: 'nodejs', q:q_param, count:amount, geocode: geo_string}, function(error, tweets, response){
       if (!error){
-        console.log(tweets);
+        //console.log(tweets);
+        return callback(tweets);
+      }else{
+        return callback(null);
       }
     })
   }
