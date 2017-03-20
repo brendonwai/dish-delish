@@ -14,10 +14,33 @@ module.exports = function(){
   var db = admin.database();
   var ref = db.ref("/cities");
 
-  this.updateEntry = function(city, new_food){
-    ref.child(city).update({
-      food:new_food
-    });
+  this.updateEntry = function(city, latitude, longitude , topFood){
+    switch (topFood.length){
+      case 1:
+        ref.child(city).update({
+          food_one:topFood[0].name,
+          lat:latitude,
+          lng: longitude
+        });
+        break;
+      case 2:
+        ref.child(city).update({
+          food_one:topFood[0].name,
+          food_two:topFood[1].name,
+          lat:latitude,
+          lng: longitude
+        });
+        break;
+      case 3:
+        ref.child(city).update({
+          food1:topFood[0].name,
+          food2:topFood[1].name,
+          food3:topFood[2].name,
+          lat:latitude,
+          lng: longitude
+        });
+        break;
+    }
   }
 
   this.removeEntry = function(city){
