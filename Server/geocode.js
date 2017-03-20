@@ -3,7 +3,7 @@ var googleMapsClient = require("@google/maps").createClient({
 });
 
 module.exports = function(){
-  this.searchGeocode = function(s_address, callback){
+  this.searchGeocode = function(s_address, callback, city_index){
     googleMapsClient.geocode({
       address: s_address
     }, function(err, response){
@@ -11,11 +11,11 @@ module.exports = function(){
         var location = response.json.results[0].geometry.location;
         //console.log(location.lat,location.lng);
         var geocode = [location.lat, location.lng];
-        return callback(geocode);
+        return callback(geocode, city_index);
       }
       if(err){
         console.log(err);
-        return callback(null);
+        return callback(null, city_index);
       }
     });
   }
