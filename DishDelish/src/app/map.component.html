@@ -1,0 +1,10 @@
+<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <sebm-google-map-marker *ngFor = "let c of items | async" [latitude]="c.lat" [longitude]="c.lng" [title]="c.$key">
+	<sebm-google-map-info-window>
+      <strong>{{c.$key}}</strong><br>
+      1. {{c.food1}}<br>
+      2. {{c.food2}}<br>
+      3. {{c.food3}}
+    </sebm-google-map-info-window>
+  </sebm-google-map-marker>
+</sebm-google-map>
