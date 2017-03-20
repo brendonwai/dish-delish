@@ -19,7 +19,7 @@ export class SearchComponent{
     this.searchTerms = new Subject();
     this.cities = af.database.list('/cities', {
       query: {
-        orderByChild: 'city',
+        orderByKey: true,
         equalTo: this.searchTerms
       }
     });

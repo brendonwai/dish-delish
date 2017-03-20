@@ -4,6 +4,6 @@
 <search-bar></search-bar>
 <ul class = "cities">
   <li *ngFor = "let item of items | async">
-    {{item.city}}: {{item.food}}
+    {{item.$key}}: {{item.food}}
   </li>
 </ul>
