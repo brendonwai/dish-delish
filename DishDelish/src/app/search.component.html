@@ -1,9 +1,9 @@
 <div id = "search-component">
-  <input #searchBox id = "searchBar"/>
+  <input #searchBox (keyup.enter)="search(searchBox.value)" id = "searchBar"/>
   <button (click)="search(searchBox.value)">Search</button>
   <div>
-    <div *ngFor = "let c of cities | async" class = "search-result">
-      {{c.$key}}
+    <div *ngFor = "let c of cities_array" class = "search-result">
+      {{c}}
     </div>
   </div>
 </div>
