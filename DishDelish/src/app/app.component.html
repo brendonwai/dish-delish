@@ -3,14 +3,7 @@
 </h1>
 <div class="left">
   <search-bar></search-bar>
-  <ul class = "cities">
-    <li *ngFor = "let item of items | async">
-      {{item.$key}}<br>
-      1. {{item.food1}}<br>
-      2. {{item.food2}}<br>
-      3. {{item.food3}}
-    </li>
-  </ul>
+
 </div>
 <div class = "right">
    <map-display></map-display>
