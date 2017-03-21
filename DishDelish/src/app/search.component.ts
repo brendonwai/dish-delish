@@ -16,12 +16,12 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class SearchComponent{
   cities: FirebaseListObservable<any[]>;
   private searchTerms: Subject<any>;
-  cities_array: Array<string>;
+  cities_array: Array<any>;
   af: AngularFire;
 
   constructor(af: AngularFire){
     this.af = af;
-    this.cities_array = new Array<string>();
+    this.cities_array = new Array<any>();
     // this.searchTerms = new Subject();
     // this.cities = af.database.list('/cities', {
     //   preserveSnapshot: true,
@@ -41,6 +41,8 @@ export class SearchComponent{
     //   this.searchTerms.next(term);
     // this.cities_array = [];
 
+    let temp = new Array<string>();
+
     if (term == '')
       this.cities_array = []
     else{
@@ -48,8 +50,10 @@ export class SearchComponent{
       let items = this.af.database.list('/cities').map(i=>{return i});
       items.forEach(i=>i.forEach(
         e=>{
-          if (e.$key.toLowerCase().includes(term.toLowerCase())) 
-            this.cities_array.push(e.$key)
+          if (e.$key.toLowerCase().includes(term.toLowerCase()) && !temp.includes(e.$key)) {
+            this.cities_array.push(e);
+            temp.push(e.$key);
+          }
         }));
     }
     console.log(this.cities_array);

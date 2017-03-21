@@ -15,6 +15,7 @@ module.exports = function(){
   var ref = db.ref("/cities");
 
   this.updateEntry = function(city, latitude, longitude , topFood){
+    console.log(city,topFood);
     switch (topFood.length){
       case 1:
         ref.child(city).update({

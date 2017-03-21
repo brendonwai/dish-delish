@@ -4,28 +4,7 @@ var database = require("./database")();
 var twitter = require("./getTwitter")();
 var geocode = require("./geocode")();
 var foodbase = require("./food.js")();
- //Sample firebase functions
-//database.updateEntry("Seattle", "factory");
-//database.removeEntry("Los Angeles");
 
-
-/* Sample twitter function
-twitter.getTweet("%23food", 2);
-*/
-
-/* Sample google maps function
-geocode.searchGeocode("Irvine, CA");
-*/
-
-
-/* basic server functionality
-var server = http.createServer(function(req, res){
-  res.writeHead(200);
-  res.end('Dish Delish');
-});
-
-server.listen(8080);
-*/
 var hashtags = [];
 
 //cities dictionary
@@ -38,7 +17,7 @@ var cities = [
     foods: []
   },
   {
-    name: "Seattle, WA",
+    name: "Chicago, IL",
     lat: 0.0,
     lng: 0.0,
     foods: []
@@ -76,27 +55,14 @@ asyn.forever(
   }
 );
 
-//keep updating each city
-//while (true){
-  // if (operation_done){
-  //   console.log(cities[searchCount%5].name);
-  //   operation_done = false;
-  //   geocode.searchGeocode(cities[searchCount%5].name, geoCallback, searchCount%5);
-  //   //geo_string = cities[searchCount%5].coord + ",50mi";
-  //   //twitter.getTweet("%23food", 100, geo_string, extractHashtags, searchCount%5);
-  //   searchCount++;
-  // }
-//}
-
 function geoCallback(geocode, city_index){
   if (geocode !== null){
     var lat = geocode[0];
     var lng = geocode[1];
     cities[city_index].lat = lat;
     cities[city_index].lng = lng;
-    var geo_string = lat + "," + lng + ",50mi";
-    console.log(geo_string);
-    twitter.getTweet("%23food", 100, geo_string, extractHashtags, city_index);
+    var geo_string = lat + "," + lng + ",75mi";
+    twitter.getTweet("%23food+delicious", 100, geo_string, extractHashtags, city_index);
   }
 }
 
@@ -111,7 +77,6 @@ function extractHashtags(jsonResponse, city_index){
       }
     }
   }
-  console.log(hashtags);
   searchFoodDatabase(city_index);
 }
 

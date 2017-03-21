@@ -55,12 +55,12 @@ button.delete {
   float: left;
   width:20%;
   display:inline;
-  padding-top:50px;
+  padding:25px;
 }
 
 .right {
-  width: 80%;
+  width: 70%;
   float: right;
   display:inline;
-  padding-top:50px
+  padding:25px
 }

@@ -3,7 +3,6 @@ var fs = require('fs');
 module.exports = function(){
   foodbase = fs.readFileSync('FOOD.txt').toString().split("\n");
   dictionary_index = [];
-  
   currentCharCode = 0;
   for (i = 0; i < foodbase.length; i++){
     if (foodbase[i].length === 0){
@@ -22,8 +21,6 @@ module.exports = function(){
       }
     }
   }
-  console.log(dictionary_index);
-
   this.searchForFood = function(foodtag){
     charAscii = foodtag.charCodeAt(0);
     if (charAscii >= 97 && charAscii <= 122){
