@@ -1,9 +1,17 @@
 <div id = "search-component">
   <input #searchBox (keyup.enter)="search(searchBox.value)" id = "searchBar"/>
   <button (click)="search(searchBox.value)">Search</button>
-  <div>
+<!--   <div>
     <div *ngFor = "let c of cities_array" class = "search-result">
-      {{c}}
+      {{c.$key}}
     </div>
-  </div>
+  </div> -->
+  <ul class = "cities">
+    <li *ngFor = "let item of cities_array">
+      {{item.$key}}<br>
+      1. {{item.food1}}<br>
+      2. {{item.food2}}<br>
+      3. {{item.food3}}
+    </li>
+  </ul>
 </div>
